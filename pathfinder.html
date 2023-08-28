@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pathfinders Techniques</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            background-color: #34495e;
+            color: #fff;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 7px 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-left: 80px;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .navbar-toggle {
+            display: none;
+            /* Hide the hamburger button on larger screens */
+            cursor: pointer;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 5px 0;
+        }
+
+        .navbar-items {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            margin-right: 80px;
+            padding: 15px;
+            transition: all 5ms;
+        }
+
+        .navbar-items li {
+            margin-left: 20px;
+        }
+
+        .navbar-items li:first-child {
+            margin-left: 0;
+        }
+
+        .navbar-items li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: larger;
+        }
+
+        .navbar-items li a:hover {
+            color: #ff9800;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 880px) {
+            .navbar-container {
+                flex-wrap: wrap;
+            }
+
+            .navbar-toggle {
+                display: block;
+                /* Show the hamburger button on smaller screens */
+            }
+
+            .navbar-items {
+                display: none;
+                /* Hide the navigation links by default on smaller screens */
+                flex-direction: column;
+                background-color: #34495e;
+                width: 100%;
+                position: absolute;
+                top: 42px;
+                left: 0;
+                text-align: center;
+                line-height: 62px;
+                height: 100vh;
+
+            }
+
+            .navbar-items li {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+
+            .navbar-items li:first-child {
+                margin-top: 10px;
+            }
+        }
+
+        #data {
+            margin-left: 20px;
+            text-align: left;
+            line-height: 35px;
+        }
+
+        #data h3 a {
+            color: black;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        #data h1 {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .algorithm {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="navbar-container">
+            <a href="#" class="logo">Algorithm Wiki</a>
+            <div class="navbar-toggle" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul class="navbar-items" id="menu">
+                <li><a href="learnalgo.html">Home</a></li>
+                <li><a href="algorithms.html">Algorithms</a></li>
+                <li><a href="pathfinder.html">Pathfinders</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div id="data">
+        <h1>Pathfinder Techniques</h1>
+        <h3><a href="">1. Breadth-First Search (BFS)</a></h3>
+        <h3><a href="">2. Depth-First Search (DFS)</a></h3>
+        <h3><a href="">3. Dijkstra's Algorithm</a></h3>
+        <h3><a href="">4. A* Algorithm</a></h3>
+        <h3><a href="">5. Greedy Best-First Search</a></h3>
+        <h3><a href="">6. Bidirectional Search</a></h3>
+        <h3><a href="">7. Jump Point Search (JPS)</a></h3>
+        <h3><a href="">8. Jump Flood Algorithm (JFA)</a></h3>
+        <h3><a href="">9. Jump Flood Algorithm (JFA)</a></h3>
+        <h3><a href="">10. Linear Sort</a></h3>
+    </div>
+    <div class="container">
+        <h1>Algorithm Wiki</h1>
+
+        <!-- Bubble Sort -->
+        <div class="algorithm">
+            <h2>Bubble Sort</h2>
+            <p>
+                Bubble Sort is a simple sorting algorithm that repeatedly steps through the list,
+                compares adjacent elements, and swaps them if they are in the wrong order.
+            </p>
+            <p>
+                <strong>Time Complexity:</strong> O(n^2) in the worst and average case, O(n) in the best case (already
+                sorted).
+            </p>
+            <p>
+                <strong>Space Complexity:</strong> O(1) as it only requires a constant amount of additional memory
+                space.
+            </p>
+        </div>
+
+        <!-- Insertion Sort -->
+        <div class="algorithm">
+            <h2>Insertion Sort</h2>
+            <p>
+                Insertion Sort is a simple sorting algorithm that builds the final sorted array one item at a time.
+                It iterates through the input list and gradually expands a sorted section behind it.
+            </p>
+            <p>
+                <strong>Time Complexity:</strong> O(n^2) in the worst and average case, O(n) in the best case (already
+                sorted).
+            </p>
+            <p>
+                <strong>Space Complexity:</strong> O(1) as it only requires a constant amount of additional memory
+                space.
+            </p>
+        </div>
+        <!-- Selection Sort -->
+        <div class="algorithm">
+            <h2>Selection Sort</h2>
+            <p>
+
+                Selection Sort is a simple and inefficient comparison-based sorting algorithm. It works by repeatedly
+                selecting the minimum (or maximum, depending on the desired order) element from the unsorted part of the
+                array and swapping it with the leftmost unsorted element. This process divides the array into two parts:
+                the sorted part on the left and the unsorted part on the right.
+            </p>
+            <p>
+                Here's an example of how Selection Sort works: <br>
+                Given the input array: [64, 34, 25, 12, 22, 11] <br>
+
+                1. First, the minimum element, 11, is selected and swapped with the leftmost element, resulting in [11,
+                34,
+                25, 12, 22, 64].<br>
+                2. Next, the minimum element in the unsorted part, 12, is selected and swapped with the second element,
+                <br>
+                3. resulting in [11, 12, 25, 34, 22, 64].<br>
+                This process continues until the array is completely sorted.
+            </p>
+            <p>
+                <strong>Time Complexity:</strong> The time complexity of Selection Sort is O(n^2) in all cases (worst,
+                average, and best)
+            </p>
+            <p>
+                <strong>Space Complexity:</strong> The space complexity of Selection Sort is O(1) or constant. The
+                algorithm only requires a constant amount of additional memory space to perform the sorting, regardless
+                of the size of the input array.
+            </p>
+        </div>
+        <!-- Merge Sort -->
+        <div class="algorithm">
+            <h2>Merge Sort</h2>
+            <p>
+                Merge Sort is a popular and efficient comparison-based sorting algorithm that follows the
+                divide-and-conquer approach. It divides the input array into two halves, recursively sorts each half,
+                and then merges the two sorted halves to produce a fully sorted array.
+            </p>
+            <p>
+                <strong>Here's how Merge Sort works:</strong> <br>
+                1. Divide: The input array is divided into two equal (or approximately equal) halves. <br>
+                2. Recursion: Each half is recursively sorted using the Merge Sort algorithm. <br>
+                3. Merge: The two sorted halves are merged back together into a single sorted array. <br>
+            </p>
+            <p>
+                <strong>Time Complexity:</strong> The time complexity of Merge Sort is O(n log n) in all cases (worst,
+                average, and best). The division of the array takes O(log n) time as it keeps dividing the array into
+                halves until each division contains only one element.
+            </p>
+            <p>
+                <strong>Space Complexity:</strong> The space complexity of Merge Sort is O(n) due to the need for
+                additional memory space to merge the subarrays.
+            </p>
+        </div>
+        <!-- Quick Sort -->
+        <div class="algorithm">
+            <h2>Quick Sort</h2>
+            <p>
+                Quick Sort is a widely used and efficient comparison-based sorting algorithm that follows the
+                divide-and-conquer approach. It works by selecting a pivot element from the input array, partitioning
+                the array into two subarrays based on the pivot, and then recursively sorting the two subarrays.
+            </p>
+            <p>
+                <strong>Here's how Quick Sort works:</strong> <br>
+                1. Partitioning: Select a pivot element from the array. Rearrange the elements in the array such that
+                all elements less than the pivot come before it, and all elements greater than the pivot come after it.
+                The pivot element is now in its sorted position. <br>
+                2. Recursion: Recursively apply Quick Sort to the subarrays on the left and right of the pivot.
+            </p>
+            <p>
+                <strong>Time Complexity:</strong> The time complexity of Quick Sort varies depending on the choice of
+                the pivot and the partitioning of the array.
+            </p>
+            <p>
+                <strong>Space Complexity:</strong> The space complexity of Quick Sort is O(log n) due to the recursive
+                nature of the algorithm. The space complexity represents the maximum depth of the recursion stack.
+            </p>
+        </div>
+        <!-- Heap Sort -->
+        <div class="algorithm">
+            <h2>Heap Sort</h2>
+            <p>
+                Heap Sort is an efficient comparison-based sorting algorithm that uses a binary heap data structure to
+                sort elements in an array. It involves building a max-heap (for ascending order) or min-heap (for
+                descending order) from the input array and repeatedly extracting the root element (the maximum or
+                minimum element, depending on the heap type) to form the sorted array.
+            </p>
+            <p>
+                <strong>Here's how Heap Sort works:</strong> <br>
+                1. Build Heap: Convert the input array into a binary heap, where the key of each node is greater (or
+                smaller) than or equal to the keys of its children. This step takes O(n) time. <br>
+                2. Extract Elements: Repeatedly extract the root element (the maximum in a max-heap or minimum in a
+                min-heap) and move it to the end of the array. After each extraction, the heap is maintained by
+                heapifying the remaining elements. This step takes O(log n) time for each element, and since there are n
+                elements, the total time complexity is O(n log n). <br>
+                3. The sorted array is formed in descending order (for max-heap) or ascending order (for min-heap).
+            </p>
+            <p>
+                <strong>Time Complexity:</strong> The time complexity of Heap Sort is O(n log n) in all cases (worst,
+                average, and best). Building the heap takes O(n) time, and the process of repeatedly extracting elements
+                and restoring the heap property takes O(n log n) time.
+            </p>
+            <p>
+                <strong>Space Complexity:</strong> The space complexity of Heap Sort is O(1) or constant. Unlike other
+                sorting algorithms that may require additional memory space, Heap Sort sorts the array in-place, using
+                only a constant amount of additional memory.
+            </p>
+        </div>
+        <!-- Counting Sort -->
+        <div class="algorithm">
+            <h2>Counting Sort</h2>
+            <p>
+                Counting Sort is an efficient integer sorting algorithm that works by determining the number of
+                occurrences of each unique element in the input array. It then uses this information to calculate the
+                position of each element in the sorted output array. Counting Sort is most effective when the range of
+                input values is not significantly larger than the number of elements to be sorted.
+            </p>
+            <p>
+                <strong>Here's how Counting Sort works:</strong><br>
+                1. Count Occurrences: Traverse the input array and count the occurrences of each unique element, storing
+                this information in a separate count array. <br>
+                2. Calculate Positions: Calculate the starting position of each element in the sorted array based on the
+                count array. This involves determining the cumulative sum of counts up to that point. <br>
+                3. Place Elements: Place each element in its correct position in the sorted output array based on the
+                information from the count array.
+            </p>
+            <p>
+                <strong>Time Complexity:</strong> The time complexity of Counting Sort is O(n + k), where n is the
+                number of elements in the input array and k is the range of input values.
+            </p>
+            <p>
+                <strong>Space Complexity:</strong>The space complexity of Counting Sort is O(n + k). It requires
+                additional memory space to store the count array, which has a size equal to the range of input values
+                (k). The output array also requires O(n) space.
+            </p>
+        </div>
+        <!-- Tree Sort -->
+        <div class="algorithm">
+            <h2>Tree Sort</h2>
+            <p>
+                Tree Sort is a sorting algorithm that uses a binary search tree data structure to sort elements in an
+                array. It involves inserting all elements from the array into a binary search tree, which automatically
+                orders the elements in the desired sequence. Then, an in-order traversal of the binary search tree
+                retrieves the elements in sorted order.
+            </p>
+            <p>
+                <strong>Here's how Tree Sort works:</strong><br>
+                1. Building the Binary Search Tree: Insert all elements from the input array into a binary search tree,
+                maintaining the properties of the binary search tree. The insertion process takes O(n log n) time in the
+                average and worst cases, where n is the number of elements in the array. <br>
+                2. In-Order Traversal: Perform an in-order traversal of the binary search tree, which retrieves the
+                elements in sorted order. The in-order traversal takes O(n) time as each element is visited once.
+            </p>
+            <p>
+                <strong>Time Complexity:</strong> The time complexity of Tree Sort is O(n log n) in the average and
+                worst cases. The primary factor contributing to the time complexity is building the binary search tree,
+                which takes O(n log n) time for n elements.
+            </p>
+            <p>
+                <strong>Space Complexity:</strong>The space complexity of Tree Sort is O(n). It requires additional
+                memory space to store the binary search tree, which can grow to store all n elements. In the average and
+                worst cases, the space occupied by the binary search tree is proportional to the number of elements in
+                the array.
+            </p>
+        </div>
+        <!-- Binary Search -->
+        <div class="algorithm">
+            <h2>Binary Search</h2>
+            <p>
+                Binary Search is a fast and efficient search algorithm used to find the position of a target value
+                within a sorted array. It works by repeatedly dividing the search space in half until the target value
+                is found or determined to be absent.
+            </p>
+            <p>
+                <strong>Here's how Binary Search works:</strong> <br>
+                1. Compare: Given a sorted array, start by comparing the target value with the middle element of the
+                array. <br>
+                2. Divide and Conquer: If the target value is equal to the middle element, the search is successful, and
+                the position is returned. If the target value is smaller than the middle element, the search continues
+                in the left half of the array. If the target value is larger than the middle element, the search
+                continues in the right half of the array. <br>
+                3. Repeat: The process of dividing the search space in half and narrowing it down continues until the
+                target value is found, or the search space becomes empty.
+            </p>
+            <p>
+                <strong>Time Complexity:</strong>The time complexity of Binary Search is O(log n), where n is the number
+                of elements in the sorted array.
+            </p>
+            <p>
+                <strong>Space Complexity:</strong>The space complexity of Binary Search is O(1) or constant. The
+                algorithm does not require additional memory space that grows with the size of the input array.
+            </p>
+        </div>
+        <!-- Linear Search -->
+        <div class="algorithm">
+            <h2>Linear Sort</h2>
+            <p>
+                Linear Search is a simple search algorithm that sequentially checks each element in a list until it
+                finds the target value (if present). It is commonly used for searching in unsorted or small datasets.
+            </p>
+            <p>
+                <strong>Here's how Linear Search works:</strong> <br>
+                1. Start at the beginning of the list and compare the target value with the first element. <br>
+                2. If the target value matches the element, the search is successful, and the position of the element is
+                returned. <br>
+                3. If the target value does not match the element, move to the next element in the list and repeat the
+                comparison. <br>
+                4. Repeat this process until either the target value is found or the end of the list is reached.
+            </p>
+            <p>
+                <strong>Time Complexity:</strong> The time complexity of Linear Search is O(n), where n is the number of
+                elements in the list. In the worst-case scenario, the search may have to iterate through all n elements
+                before finding the target value or determining that it is not present.
+            </p>
+            <p>
+                <strong>Space Complexity:</strong>The space complexity of Linear Search is O(1) or constant. The
+                algorithm only requires a few additional memory spaces to store variables for keeping track of the
+                search progress.
+            </p>
+        </div>
+
+
+
+    </div>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("menu");
+            menu.style.display = menu.style.display === "none" ? "flex" : "none";
+        }
+
+    </script>
+</body>
+
+</html>

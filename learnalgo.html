@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithms and pathfinders Wiki</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            background-color: #34495e;
+            color: #fff;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 7px 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-left: 80px;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .navbar-toggle {
+            display: none;
+            /* Hide the hamburger button on larger screens */
+            cursor: pointer;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 5px 0;
+        }
+
+        .navbar-items {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            margin-right: 80px;
+            padding: 15px;
+            transition: all 5ms;
+        }
+
+        .navbar-items li {
+            margin-left: 20px;
+        }
+
+        .navbar-items li:first-child {
+            margin-left: 0;
+        }
+
+        .navbar-items li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: larger;
+        }
+
+        .navbar-items li a:hover {
+            color: #ff9800;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 880px) {
+            .navbar-container {
+                flex-wrap: wrap;
+            }
+
+            .navbar-toggle {
+                display: block;
+                /* Show the hamburger button on smaller screens */
+            }
+
+            .navbar-items {
+                display: none;
+                /* Hide the navigation links by default on smaller screens */
+                flex-direction: column;
+                background-color: #34495e;
+                width: 100%;
+                position: absolute;
+                top: 42px;
+                left: 0;
+                text-align: center;
+                line-height: 62px;
+                height: 100vh;
+                
+            }
+
+            .navbar-items li {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+
+            .navbar-items li:first-child {
+                margin-top: 10px;
+            }
+        }
+        #img1{
+            max-width: 100vw ;
+            height: 100%;
+            
+        }
+        #content{
+            position: absolute;
+            top: 250px;
+            left: 450px;
+            color: white;
+            text-align: center;
+        }
+        #content h2{
+            color: white;
+            font-size: 70px;
+        }
+        #content2{
+            position: absolute;
+            top: 170px;
+           
+        }
+        #main{
+            background-color: #34495e;
+        }
+        #quotes{
+            width: 1065px;
+            /* margin: 0px; */
+            margin: auto;
+            background-color: #34495e;
+        }
+        #quotes p{
+            margin: -4px;
+            text-align: center;
+            font-size: 50px;
+            /* font-family: cursive; */
+            color: white;
+            padding-top: 20px;
+            padding-bottom: 25px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="navbar-container">
+            <a href="#" class="logo">Algorithm Wiki</a>
+            <div class="navbar-toggle" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul class="navbar-items" id="menu">
+                <li><a href="learnalgo.html">Home</a></li>
+                <li><a href="algorithms.html">Algorithms</a></li>
+                <li><a href="pathfinder.html">Pathfinders</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div id="fimg">
+        <img id="img1" src="fimg.jpg" alt="pattrenimg">
+    </div>
+    <div id="content">
+        <h2>Learn About Algorithms and Pathfinders Techniques</h2>
+    </div>
+    <div id="content2">
+        <img src="svgpng.png" alt="">
+    </div>
+    <div id="main">
+        <div id="quotes">
+            <p> We're entering a new world in which data may be more important than software. <br> <span style="text-decoration: underline; font-size: 45px;">Tim O'Reilly</span></p>
+        </div>
+    </div>
+    
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("menu");
+            menu.style.display = menu.style.display === "none" ? "flex" : "none";
+        }
+
+    </script>
+</body>
+
+</html>
